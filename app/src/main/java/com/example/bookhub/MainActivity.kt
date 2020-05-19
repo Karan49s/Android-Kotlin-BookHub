@@ -2,13 +2,16 @@ package com.example.bookhub
 
 //import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.FrameLayout
+import androidx.appcompat.app.ActionBarDrawerToggle
 //import android.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import androidx.appcompat.widget.Toolbar;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,10 +35,32 @@ class MainActivity : AppCompatActivity() {
 
         setUpToolbar()
 
+        val actionBarDrawerToggle = ActionBarDrawerToggle(
+            this@MainActivity,
+            drawerLayout,0,0
+            //R.string.open_drawer,
+            //R.string.close_drawer
+        )
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
+
+
     }
 
     fun setUpToolbar(){
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Toolbar Title"
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id==android.R.id.home){
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
