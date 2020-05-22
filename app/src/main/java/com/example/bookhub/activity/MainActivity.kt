@@ -1,10 +1,9 @@
-package com.example.bookhub
+package com.example.bookhub.activity
 
 //import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 //import android.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -13,8 +12,11 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import kotlinx.android.synthetic.main.fragment_dashboard.*
-import java.util.*
+import com.example.bookhub.R
+import com.example.bookhub.fragment.AboutFragment
+import com.example.bookhub.fragment.DashboardFragment
+import com.example.bookhub.fragment.FavouritesFragment
+import com.example.bookhub.fragment.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -72,7 +74,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.favourites ->{
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame, FavouritesFragment())
+                        .replace(
+                            R.id.frame,
+                            FavouritesFragment()
+                        )
                         .commit()
 
                     supportActionBar?.title = "Favourites"
@@ -80,7 +85,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.profile ->{
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame, ProfileFragment())
+                        .replace(
+                            R.id.frame,
+                            ProfileFragment()
+                        )
                         .commit()
 
                     supportActionBar?.title = "Profile"
@@ -88,7 +96,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.aboutApp ->{
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.frame, AboutFragment())
+                        .replace(
+                            R.id.frame,
+                            AboutFragment()
+                        )
                         .commit()
 
                     supportActionBar?.title = "About App"
